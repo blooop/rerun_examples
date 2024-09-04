@@ -1,6 +1,6 @@
 # Changelog
 
-## python_template
+## rerun_examples
 
 ## [0.0.0]
 
