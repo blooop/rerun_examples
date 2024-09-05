@@ -11,5 +11,8 @@ apt_tools:
 pip_language-toolchain:
   - uv #use uv instead of pip
 
+apt_rerun:
+  - libgtk-3-dev libxkbcommon-x11-0 vulkan-tools mesa-vulkan-drivers
+
 script_pixi-user:
   - scripts/install_pixi.sh
