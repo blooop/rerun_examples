@@ -1,4 +1,4 @@
-# python_template
+# rerun_examples
 A template repo for python projects that is set up using [pixi](https://pixi.sh). 
 
 This has basic setup for
@@ -15,11 +15,11 @@ This has basic setup for
 
 ## Continuous Integration Status
 
-[![Ci](https://github.com/blooop/python_template/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/blooop/python_template/actions/workflows/ci.yml?query=branch%3Amain)
-[![Codecov](https://codecov.io/gh/blooop/python_template/branch/main/graph/badge.svg?token=Y212GW1PG6)](https://codecov.io/gh/blooop/python_template)
-[![GitHub issues](https://img.shields.io/github/issues/blooop/python_template.svg)](https://GitHub.com/blooop/python_template/issues/)
-[![GitHub pull-requests merged](https://badgen.net/github/merged-prs/blooop/python_template)](https://github.com/blooop/python_template/pulls?q=is%3Amerged)
-[![GitHub release](https://img.shields.io/github/release/blooop/python_template.svg)](https://GitHub.com/blooop/python_template/releases/)
+[![Ci](https://github.com/blooop/rerun_examples/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/blooop/rerun_examples/actions/workflows/ci.yml?query=branch%3Amain)
+[![Codecov](https://codecov.io/gh/blooop/rerun_examples/branch/main/graph/badge.svg?token=Y212GW1PG6)](https://codecov.io/gh/blooop/rerun_examples)
+[![GitHub issues](https://img.shields.io/github/issues/blooop/rerun_examples.svg)](https://GitHub.com/blooop/rerun_examples/issues/)
+[![GitHub pull-requests merged](https://badgen.net/github/merged-prs/blooop/rerun_examples)](https://github.com/blooop/rerun_examples/pulls?q=is%3Amerged)
+[![GitHub release](https://img.shields.io/github/release/blooop/rerun_examples.svg)](https://GitHub.com/blooop/rerun_examples/releases/)
 [![License](https://img.shields.io/pypi/l/bencher)](https://opensource.org/license/mit/)
 [![Python](https://img.shields.io/badge/python-3.10%20%7C%203.11%20%7C%203.12-blue)](https://www.python.org/downloads/)
 [![Pixi Badge](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/prefix-dev/pixi/main/assets/badge/v0.json)](https://pixi.sh)
@@ -43,7 +43,7 @@ There are currently two ways of running code.  The legacy docker way and the wor
 
 ## Legacy
 
-run the `scripts/launch_vscode.sh` script to build and connect to a docker container.  The docker container is dynamically generated using [rocker](https://github.com/osrf/rocker) and [deps rocker](https://github.com/blooop/deps_rocker).  [deps rocker](https://github.com/blooop/deps_rocker) looks at the python_template.deps.yaml file to install any required apt, pip or shell scripts and launches a container that vscode attaches to. 
+run the `scripts/launch_vscode.sh` script to build and connect to a docker container.  The docker container is dynamically generated using [rocker](https://github.com/osrf/rocker) and [deps rocker](https://github.com/blooop/deps_rocker).  [deps rocker](https://github.com/blooop/deps_rocker) looks at the rerun_examples.deps.yaml file to install any required apt, pip or shell scripts and launches a container that vscode attaches to. 
 
 ## Pixi
 
