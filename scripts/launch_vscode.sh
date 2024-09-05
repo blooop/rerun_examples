@@ -48,8 +48,30 @@ else
     source $VENV_DIR/bin/activate
 fi
 
+
+XSOCK=/tmp/.X11-unix
+XAUTH=/tmp/.docker.xauth
+
+xauth nlist $DISPLAY | sed -e 's/^..../ffff/' | xauth -f $XAUTH nmerge -
+
+echo $XSOCK
+echo $XAUTH
+chmod 777 $XAUTH
+echo $CONTAINER_NAME
+
 # Run the rocker command with the specified parameters
-rocker --nvidia --x11 --user --pull --git --image-name "$CONTAINER_NAME" --name "$CONTAINER_NAME" --volume "${PWD}":/workspaces/"${CONTAINER_NAME}":Z --deps --oyr-run-arg " --detach" ubuntu:22.04 "$@" 
+# rocker --nvidia --x11 --user --pull --git --privileged --image-name "$CONTAINER_NAME" --name 
+# $CONTAINER_NAME --volume "${PWD}":/workspaces/"${CONTAINER_NAME}":Z --deps --oyr-run-arg " --detach" ubuntu:22.04 "$@" 
+
+
+# rocker --nvidia --x11 --user --pull --git --image-name "$CONTAINER_NAME" --name "$CONTAINER_NAME" --volume "${PWD}":/workspaces/"${CONTAINER_NAME}":Z --deps --oyr-run-arg " --detach" ubuntu:22.04 "$@" 
+
+rocker --user --pull --git --privileged XAUTHORITY=$XAUTH --image-name "$CONTAINER_NAME" --name "$CONTAINER_NAME" --volume "${PWD}":/workspaces/"${CONTAINER_NAME}":Z $XSOCK:$XSOCK $XAUTH:$XAUTH --deps --oyr-run-arg " --detach" ubuntu:22.04 "$@" 
+
+
+# $XSOCK:$XSOCK $XAUTH:$XAUTH
+
+# $XSOCK:$XSOCK -v $XAUTH:$XAUTH
 
 deactivate
 
