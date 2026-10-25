@@ -3,9 +3,7 @@ A template repo for python projects that is set up using [pixi](https://pixi.sh)
 
 This has basic setup for
 
-* pylint
-* ruff
-* black
+* ruff (format and lint)
 * pytest
 * codecov
 * git-lfs
