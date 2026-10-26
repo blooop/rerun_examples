@@ -1,7 +1,15 @@
 {
-    // Uses the template's prebuilt image by default for fast startup.
-    // To build locally: pixi run dev-use-local
-    // To use this repo's own prebuilt image: pixi run dev-use-prebuilt
+    // Uses python_template's prebuilt image by default for fast startup.
+    //
+    // Template-only: python_template itself also ships .devcontainer/Dockerfile,
+    // .devcontainer/ci/ (the config its image is built from) and two pixi
+    // tasks that toggle this block -- `pixi run dev-use-local` (uncomment the
+    // "build" block below and build from the Dockerfile) and
+    // `pixi run dev-use-prebuilt` (point "image" at this repo's own image).
+    // A child repo that kept only devcontainer.json, post-create.sh and
+    // claude-code/init-host.sh (the initializeCommand below) has none of
+    // those; there the commented "build" block is inert, and to build locally
+    // you bring them over from blooop/python_template first.
     // "build": {
     //     "dockerfile": "Dockerfile",
     //     "context": ".."
@@ -9,13 +17,13 @@
     "image": "ghcr.io/blooop/python_template/devcontainer:latest",
 
     // There is deliberately no "features" block. The claude-code feature is
-    // already baked into the image above: .devcontainer/ci/devcontainer.json,
-    // which is the config CI builds that image from, declares
-    // "../claude-code". Declaring it again here made the devcontainer spec
-    // build a derived image on the first launch of every branch, reinstalling
-    // something the pulled image already carried -- so the "prebuilt image for
-    // fast startup" above still paid for a build. With this block gone the
-    // launch is a pull and nothing else.
+    // already baked into the image above: python_template's
+    // .devcontainer/ci/devcontainer.json, which is the config its CI builds
+    // that image from, declares "../claude-code". Declaring it again here
+    // made the devcontainer spec build a derived image on the first launch of
+    // every branch, reinstalling something the pulled image already carried --
+    // so the "prebuilt image for fast startup" above still paid for a build.
+    // With this block gone the launch is a pull and nothing else.
     //
     // Adding a feature back here is allowed and costs that derived build again.
     // If that ever becomes the normal case, the fix is devlaunch's design --
@@ -63,7 +71,9 @@
     },
 
     // Three mounts. The pixi volume keeps the environment out of the bind-
-    // mounted workspace; the other two share host credentials.
+    // mounted workspace; the other two share host credentials. docker will not
+    // create the container when a bind source is missing, so initializeCommand
+    // (.devcontainer/claude-code/init-host.sh) creates both on the host first.
     //
     // ~/.config/gh is here because it works. `gh` uses a system keyring when
     // one is available and falls back to hosts.yml when it is not, and on this

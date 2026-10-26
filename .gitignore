@@ -170,3 +170,10 @@ log/**
 
 managed_context/metadata.json
 test_suite_analysis/metadata.json
+
+.devpod/
+.devpod-internal/
+.ralph/
+
+# Claude Code local settings (personal, not shared)
+.claude/settings.local.json
