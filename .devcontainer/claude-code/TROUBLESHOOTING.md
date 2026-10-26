@@ -36,7 +36,7 @@ Every one of these is writable from inside the container, and a write lands on t
 }
 ```
 
-The `../claude-code` feature is declared in `.devcontainer/ci/devcontainer.json`, the config CI builds the image from, so there is no `features` block here -- and no `runArgs` either.
+The `../claude-code` feature is declared in python_template's `.devcontainer/ci/devcontainer.json`, the config its CI builds the image from, so there is no `features` block here -- and no `runArgs` either.
 
 ## Common Issues and Solutions
 
@@ -255,7 +255,7 @@ docker inspect <container-id> | jq '.[0].HostConfig.NetworkMode'
 
 When setting up a new workspace:
 
-- [ ] `../claude-code` feature declared in `.devcontainer/ci/devcontainer.json`, so the published image carries it
+- [ ] `../claude-code` feature declared in python_template's `.devcontainer/ci/devcontainer.json`, so the published image carries it
 - [ ] `claude` authenticated on the host, so no OAuth flow runs in the container
 - [ ] Environment variables added (CLAUDE_CONFIG_DIR, XDG_*)
 - [ ] Files exist on host: `.credentials.json`, `.claude.json`

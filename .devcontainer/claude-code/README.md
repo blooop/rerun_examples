@@ -41,7 +41,7 @@ Splitting the rest of the directory into separate read-only binds is possible an
 
 ### Setup
 
-The feature is declared where the image is built, in `.devcontainer/ci/devcontainer.json`:
+The feature is declared where the image is built, in python_template's `.devcontainer/ci/devcontainer.json` (this repo does not carry that file):
 
 ```json
 {
