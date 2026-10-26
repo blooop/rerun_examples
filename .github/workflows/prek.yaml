@@ -1,0 +1,19 @@
+name: prek
+
+on: [pull_request]
+
+jobs:
+  prek:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      # The ruff hooks are local hooks that run ruff (and prek) from the pixi
+      # environment, so CI uses the same pinned versions as local.
+      - uses: prefix-dev/setup-pixi@v0.10.0
+        with:
+          cache: true
+          locked: true
+          environments: default
+      - name: prek
+        # `prek` is the pixi task `prek run -a`; extra args are appended to it.
+        run: pixi run --locked prek --show-diff-on-failure

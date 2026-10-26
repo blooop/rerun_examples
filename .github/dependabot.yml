@@ -12,11 +12,10 @@ updates:
     groups:
       dev-dependencies:
         #try to group all development dependencies updates into a single pr
-        patterns:          
-          - "check-manifest"
-          - "pre-commit"
+        patterns:
+          - "prek"
           - "pytest"
-          - "pytest-cov"          
+          - "pytest-cov"
           - "hypothesis"
           - "ruff"
           - "coverage"
